@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Orders Panel</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="container">
+    <div class="hero-unit">
+        <h1>Orders page</h1>
+        <p>
+        <a th:href="@{/orders/orderlist}">
+            <button type="button" class="btn btn-dark"> Show orders </button>
+        </a>
+        <p>
+        <form method="post" th:action="@{/orders/create}" th:object="${orderForm}">
+            <label>
+                Product name:
+                <input type="text" th:field="*{productName}">
+            </label>
+
+            <label>
+                Amount:
+                <input type="number" th:field="*{amount}">
+                <ul th:if="${#fields.hasErrors('amount')}">
+                    <li th:each="err : ${#fields.errors('amount')}" th:text="${err}">_Input is incorrect</li>
+                </ul>
+            </label>
+
+            <button type="submit">SEND DATA</button>
+        </form>
+        </p>
+    </div>
+</div>
+</body>
+</html>
+
