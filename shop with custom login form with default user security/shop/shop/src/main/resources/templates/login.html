@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<body>
+<th:block th:include="/_header"></th:block>
+<th:block th:include="/_menu"></th:block>
+<div class="login-container">
+  <!-- /login?error=true -->
+  <h2>Login Form</h2>
+
+  <!-- Display error message if authentication failed -->
+  <div th:if="${param.error}">
+    <p style="color: red;">Invalid username or password.</p>
+  </div>
+  <form method="POST" th:action="@{/perform_login}">
+  <!-- Display the login form -->
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" th:value="${param.username}" required/>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required/>
+    </div>
+    <div>
+      <button type="submit">Login</button>
+    </div>
+  </form>
+<th:block th:include="/_footer"></th:block>
+</div>
+</body>
+</html>
