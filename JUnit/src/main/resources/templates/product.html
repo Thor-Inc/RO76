@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Orders</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form method="post" th:action="@{products}" th:object="${product}">
+  <label>
+    Product id:
+    <input type="text" th:field="*{id}">
+  </label>
+
+  <button type="submit">Search by id</button>
+</form>
+<br>
+<br>
+
+<div>
+  <form method="post" th:action="@{/products/updated}" th:object="${foundProduct}">
+    <label>
+      Product:
+      <input type="text" th:field="*{id}">
+      <input type="text" th:field="*{productName}">
+      <input type="text" th:field="*{description}">
+      <input type="text" th:field="*{productCategory}">
+    </label>
+
+    <button type="submit">Update Product</button>
+  </form>
+</div>
+</body>
+</html>
